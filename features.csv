@@ -1,0 +1,57 @@
+feature,area,priority,original,clone,notes
+"Créer un projet (9:16, 16:9, 1:1)",Projet,must,CapCut,no,S02. Formats imposés par le cahier des charges.
+Sauvegarde automatique des projets,Projet,must,CapCut,no,"S01. Stockage local d'abord (IndexedDB), cloud plus tard."
+Reprise d'un projet interrompu,Projet,should,CapCut,no,F01. Restaurer la timeline après fermeture.
+"Import de vidéos, images et audios",Montage,must,CapCut,no,"S08, S15. Depuis la galerie du téléphone."
+"Timeline multi-pistes (vidéo, audio, texte)",Montage,must,CapCut,no,S08. Cœur de l'éditeur.
+Découper / scinder / supprimer un clip,Montage,must,CapCut,no,S09.
+Fusionner / assembler des clips,Montage,must,CapCut,no,S09.
+Annuler / rétablir,Montage,must,CapCut,no,S08. Historique d'actions.
+Vitesse du clip (ralenti / accéléré),Montage,should,CapCut,no,S09.
+Recadrage et mise à l'échelle par format,Montage,should,CapCut,no,"S02, S08. Équivalent du reframe automatique en version manuelle."
+"Transitions de base (fondu, glissement, zoom)",Effets,must,CapCut,no,"S10. Créées par nous, pas copiées."
+Filtres de couleur (réglages et préréglages),Effets,should,CapCut,no,S10. Shaders WebGL maison.
+Effets visuels simples,Effets,could,CapCut,no,S10.
+Keyframes (animation de position / échelle),Effets,could,CapCut,no,S10. Phase 2.
+Texte et titres animés,Texte,must,CapCut,no,S08. Polices libres (OFL).
+Sous-titres automatiques (Whisper),Sous-titres,must,CapCut,no,"S12. Whisper en local (Apache 2.0). Quota gratuit CapCut limité, le nôtre illimité car local."
+Édition et style des sous-titres,Sous-titres,should,CapCut,no,S12.
+Musique libre de droits (bibliothèque),Audio,should,CapCut,no,"S11. Sources CC0 / libres uniquement, pas de catalogue sous licence."
+Voix off (enregistrement),Audio,must,CapCut,no,S11. Permission micro.
+Voix IA texte → parole (Kokoro),Audio,should,CapCut+Kling,no,"S11. Kokoro-82M, Apache 2.0, local. À tester sur Android."
+Effets sonores,Audio,could,Kling,no,S11. Bibliothèque libre d'abord ; génération IA plus tard.
+Génération d'images IA depuis un texte,IA image,must,CapCut+Kling,no,S03. FLUX.1-schnell via Cloudflare Workers AI (quota gratuit du jour partagé).
+Styles et seed pour les images,IA image,should,CapCut+Kling,no,S03.
+Vidéo IA depuis un texte,IA vidéo,should,Kling,no,S04. Pas d'hébergement gratuit public : mode Atelier Kaggle (vous) ou clé API perso.
+Image → vidéo IA (animation réaliste),IA vidéo,should,Kling,no,S05. Wan 2.2 (Apache 2.0) via Atelier Kaggle ou clé API perso.
+"Animation 2.5D locale d'une image (zoom, parallaxe)",IA vidéo,must,Kling,no,"S05. Gratuit et local ; à étiqueter « animation simple », pas « réaliste »."
+Vidéo à partir de références visuelles,IA vidéo,could,Kling,no,S06. Dépend du modèle ; via API perso plus tard.
+Extension / prolongation d'un clip IA,IA vidéo,could,Kling,no,S05. Réutiliser la dernière image comme première du plan suivant.
+Planche personnage (fiche de référence),Cohérence,should,Kling,no,S07. Image IA + description verrouillée + seed ; à tester avec FLUX.2 klein 4B (Apache 2.0).
+Personnage réutilisé sur plusieurs scènes,Cohérence,should,Kling,no,F03. Enchaînement dernier plan → premier plan.
+Liaison de sujet (subject binding) native,Cohérence,could,Kling,no,Fonction propriétaire : via API officielle plus tard.
+Estimation du coût avant génération,Crédits,must,Kling,no,"S03–S06, S14. Quota du jour affiché avant chaque lancement."
+Quota gratuit quotidien et historique,Crédits,must,Kling,no,S14. Registre (ledger) dès le jour 1.
+Remboursement automatique en cas d'échec,Crédits,must,Kling,no,S14. Le quota n'est débité qu'en cas de succès.
+Achat de crédits (désactivé pour l'instant),Crédits,could,Kling,no,"Interrupteur désactivé. Sur Android, les crédits passent par Google Play Billing (à vérifier)."
+Clé API personnelle (BYOK),Fournisseurs,should,aucun,no,"S16. Clé stockée sur l'appareil, jamais sur nos serveurs."
+Couche d'adaptateurs de fournisseurs,Fournisseurs,must,aucun,no,"Interface commune pour ajouter Kling API, etc. sans toucher au reste."
+Export 720p,Export,must,CapCut,no,S13.
+"Export 1080p, 9:16 / 16:9 / 1:1",Export,must,CapCut,no,S13. WebCodecs + Mediabunny (MPL-2.0). Durée limitée selon la mémoire.
+Export sans filigrane,Export,must,CapCut,no,Aucun filigrane puisqu'il n'y a pas de palier payant.
+Étiquette « contenu généré par IA »,Conformité,should,aucun,no,Métadonnée dans l'export et mention dans l'interface.
+Modération des prompts,Conformité,must,aucun,no,S03–S06. Filtre avant l'appel au modèle.
+Consentement pour toute voix imitée,Conformité,must,aucun,no,"Règle produit, même si le clonage est exclu du MVP."
+Installation comme application (PWA),Plateforme,must,aucun,no,Android via Chrome. Publication Play Store optionnelle (frais unique à vérifier).
+Fonctionnement hors-ligne du montage,Plateforme,should,CapCut,no,Service worker. Génération IA exige le réseau.
+"Interface sombre moderne, identité originale",Design,must,aucun,no,"Charte à créer : nom, logo, palette, icônes originaux."
+Synchronisation cloud des projets,Plateforme,could,CapCut,no,Hors MVP : stockage local d'abord (0 €).
+Travail en équipe / collaboration,Plateforme,skip,CapCut,no,Hors périmètre : coût et complexité.
+Templates et effets de la bibliothèque CapCut,Skip,skip,CapCut,no,Propriétaires. On crée les nôtres.
+Catalogue musical sous licence,Skip,skip,CapCut,no,Licences impossibles à 0 €.
+Clonage de voix,Skip,skip,CapCut,no,"Consentement, licences, risque d'abus. Pas dans le MVP."
+Avatars IA parlants,Skip,skip,CapCut,no,Hors périmètre.
+Export 4K,Skip,skip,CapCut+Kling,no,Hors cahier des charges (1080p max).
+Modèles propriétaires de Kling (qualité identique),Skip,skip,Kling,no,"Non reproductibles. Accès uniquement par l'API officielle payante, plus tard."
+Contournement des crédits ou abonnements d'un service,Skip,skip,aucun,no,Interdit par principe du projet.
+Hébergement gratuit de vidéo IA pour le public,Skip,skip,Kling,no,Non viable à 0 € : GPU payant. Colab gratuit interdit l'usage comme service web.
