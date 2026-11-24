@@ -1,19 +1,19 @@
 feature,area,priority,original,clone,notes
-"Créer un projet (9:16, 16:9, 1:1)",Projet,must,CapCut,no,S02. Formats imposés par le cahier des charges.
-Sauvegarde automatique des projets,Projet,must,CapCut,no,"S01. Stockage local d'abord (IndexedDB), cloud plus tard."
-Reprise d'un projet interrompu,Projet,should,CapCut,no,F01. Restaurer la timeline après fermeture.
-"Import de vidéos, images et audios",Montage,must,CapCut,no,"S08, S15. Depuis la galerie du téléphone."
-"Timeline multi-pistes (vidéo, audio, texte)",Montage,must,CapCut,no,S08. Cœur de l'éditeur.
-Découper / scinder / supprimer un clip,Montage,must,CapCut,no,S09.
-Fusionner / assembler des clips,Montage,must,CapCut,no,S09.
-Annuler / rétablir,Montage,must,CapCut,no,S08. Historique d'actions.
-Vitesse du clip (ralenti / accéléré),Montage,should,CapCut,no,S09.
-Recadrage et mise à l'échelle par format,Montage,should,CapCut,no,"S02, S08. Équivalent du reframe automatique en version manuelle."
-"Transitions de base (fondu, glissement, zoom)",Effets,must,CapCut,no,"S10. Créées par nous, pas copiées."
+"Créer un projet (9:16, 16:9, 1:1)",Projet,must,CapCut,yes,S02. Choix du format dans l'éditeur.
+Sauvegarde automatique des projets,Projet,must,CapCut,yes,"S01. Projet + médias dans IndexedDB, sur l'appareil."
+Reprise d'un projet interrompu,Projet,should,CapCut,yes,"F01. Réouverture depuis Projets, timeline restaurée."
+"Import de vidéos, images et audios",Montage,must,CapCut,partial,"S08, S15. Vidéos et images : oui. Audio seul : pas encore."
+"Timeline multi-pistes (vidéo, audio, texte)",Montage,must,CapCut,partial,S08. Pistes vidéo/image et texte ; son des vidéos conservé ; pas de piste audio séparée.
+Découper / scinder / supprimer un clip,Montage,must,CapCut,yes,"S09. Scinder à la tête de lecture, rogner par curseurs, supprimer, dupliquer."
+Fusionner / assembler des clips,Montage,must,CapCut,yes,"S09. Clips mis bout à bout, réordonnables."
+Annuler / rétablir,Montage,must,CapCut,yes,S08. 60 niveaux.
+Vitesse du clip (ralenti / accéléré),Montage,should,CapCut,yes,"S09. 0,5× à 2×."
+Recadrage et mise à l'échelle par format,Montage,should,CapCut,partial,"S02, S08. Remplir ou Ajuster par clip ; pas de recadrage libre."
+"Transitions de base (fondu, glissement, zoom)",Effets,must,CapCut,partial,S10. Fondu entrant/sortant seulement.
 Filtres de couleur (réglages et préréglages),Effets,should,CapCut,no,S10. Shaders WebGL maison.
 Effets visuels simples,Effets,could,CapCut,no,S10.
 Keyframes (animation de position / échelle),Effets,could,CapCut,no,S10. Phase 2.
-Texte et titres animés,Texte,must,CapCut,no,S08. Polices libres (OFL).
+Texte et titres animés,Texte,must,CapCut,partial,"S08. Texte fixe (position, taille, 3 couleurs, police système) ; pas d'animation."
 Sous-titres automatiques (Whisper),Sous-titres,must,CapCut,no,"S12. Whisper en local (Apache 2.0). Quota gratuit CapCut limité, le nôtre illimité car local."
 Édition et style des sous-titres,Sous-titres,should,CapCut,no,S12.
 Musique libre de droits (bibliothèque),Audio,should,CapCut,no,"S11. Sources CC0 / libres uniquement, pas de catalogue sous licence."
@@ -36,9 +36,9 @@ Remboursement automatique en cas d'échec,Crédits,must,Kling,no,S14. Le quota n
 Achat de crédits (désactivé pour l'instant),Crédits,could,Kling,no,"Interrupteur désactivé. Sur Android, les crédits passent par Google Play Billing (à vérifier)."
 Clé API personnelle (BYOK),Fournisseurs,should,aucun,no,"S16. Clé stockée sur l'appareil, jamais sur nos serveurs."
 Couche d'adaptateurs de fournisseurs,Fournisseurs,must,aucun,no,"Interface commune pour ajouter Kling API, etc. sans toucher au reste."
-Export 720p,Export,must,CapCut,no,S13.
-"Export 1080p, 9:16 / 16:9 / 1:1",Export,must,CapCut,no,S13. WebCodecs + Mediabunny (MPL-2.0). Durée limitée selon la mémoire.
-Export sans filigrane,Export,must,CapCut,no,Aucun filigrane puisqu'il n'y a pas de palier payant.
+Export 720p,Export,must,CapCut,yes,"S13. Enregistrement en temps réel (MediaRecorder), image + son."
+"Export 1080p, 9:16 / 16:9 / 1:1",Export,must,CapCut,partial,"S13. Fonctionne via MediaRecorder, pas WebCodecs/Mediabunny ; à valider sur un vrai téléphone."
+Export sans filigrane,Export,must,CapCut,yes,Aucun filigrane.
 Étiquette « contenu généré par IA »,Conformité,should,aucun,no,Métadonnée dans l'export et mention dans l'interface.
 Modération des prompts,Conformité,must,aucun,no,S03–S06. Filtre avant l'appel au modèle.
 Consentement pour toute voix imitée,Conformité,must,aucun,no,"Règle produit, même si le clonage est exclu du MVP."
